@@ -295,9 +295,8 @@ def upgrade() -> None:
         ),
     )
 
-    # new schema for `object_images`
     op.create_table(
-        "object_images",
+        "object_api_metadata",
         sa.Column(
             "object_id",
             sa.Integer,
@@ -305,14 +304,9 @@ def upgrade() -> None:
             comment=column_comment_dict["object_id"]
         ),
         sa.Column(
-            "image",
-            sa.Text,
-            comment=column_comment_dict["primary_image"]
-        ),
-        sa.Column(
-            "is_primary_image",
-            sa.Boolean,
-            comment="Identifies if its the primary image for the object."
+            "metadata_date",
+            sa.DateTime,
+            comment=column_comment_dict["metadata_date"]
         ),
         sa.Column(
             "created_at",
